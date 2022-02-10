@@ -1,15 +1,17 @@
-import { useDispatch, useSelector } from "react-redux";
-
+import Withdraw  from "./Withdraw"
+import Deposit from "./Deposit"
+import {useState} from "react"
 
 const Atm = () => {
+    const[withdraw, setWithdraw] = useState(true);
 
-    const balance = useSelector((state) => state.balance);
-
-    return (
+    return(
         <div>
-            <h1>Balance: {balance}</h1>
+        {withdraw ? <Withdraw/>: <Deposit/> }
+        
         </div>
     )
+    
 };
 
 export default Atm;
