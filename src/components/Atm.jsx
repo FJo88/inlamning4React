@@ -8,7 +8,7 @@ const Atm = () => {
     return(
         <div>
         {withdraw ? <Withdraw/>: <Deposit/> }
-        
+        <button onClick={() =>{setWithdraw(!withdraw)}} className="change">{withdraw ? "Go to Deposit": "Go to Withdraw"}</button>
         </div>
     )
     

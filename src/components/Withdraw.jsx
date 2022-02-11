@@ -1,44 +1,46 @@
 import { useDispatch, useSelector } from "react-redux";
-import { withDraw100, withDraw200, withDraw500, withDraw1000, withDrawValue } from "../redux/ducks/atm";
+import { withDrawClickedValue , withDrawValue } from "../redux/ducks/atm";
 
 const Withdraw = () => {
 
     let dispatch = useDispatch();
     const balance = useSelector((state) => state.balance);
 
-    let onWithDraw100 = () =>{
-        dispatch(withDraw100());
-        console.log("You withdrew 100");
+    let onWithDrawClicked = (e) =>{
+        let value = e.target.innerText;
+        if(value <= balance){
+            dispatch(withDrawClickedValue(value));
+            console.log("You withdrew "+ value);
+        }
+        else{
+            alert("Not enough money on your account!!!")
+        }
     };
-    let onWithDraw200 = () =>{
-        dispatch(withDraw200());
-        console.log("You withdrew 200");
-    };
-    let onWithDraw500 = () =>{
-        dispatch(withDraw500());
-        console.log("You withdrew 500");
-    };
-    let onWithDraw1000 = () =>{
-        dispatch(withDraw1000());
-        console.log("You withdrew 1000");
-    };
+ 
     let onWithDrawValue = () =>{
         const value = +document.querySelector("#value").value;
-        dispatch(withDrawValue(value));
-        console.log("You withdrew "+ value);
+        if(value <= balance){
+            dispatch(withDrawValue(value));
+            console.log("You withdrew "+ value);
+        }
+        else{
+            alert("Not enough money on your account!!!")
+        }
     }
 
     return (
-        <div>
+        <div className="with">
             <h1>Balance: {balance}</h1>
             <div>
-                <button onClick={onWithDraw100}>100</button>
-                <button onClick={onWithDraw200}>200</button>
-                <button onClick={onWithDraw500}>500</button>
-                <button onClick={onWithDraw1000}>1000</button>
+                <h4>Withdraw specific value:</h4>
+                <button onClick={onWithDrawClicked}>100</button>
+                <button onClick={onWithDrawClicked}>200</button>
+                <button onClick={onWithDrawClicked}>500</button>
+                <button onClick={onWithDrawClicked}>1000</button>
+                <br/>
                 <br/>
                 <input type="number" id="value" />
-                <button onClick={onWithDrawValue}>Add value</button> 
+                <button onClick={onWithDrawValue}>Withdraw value</button> 
             </div>
         </div>
     )
