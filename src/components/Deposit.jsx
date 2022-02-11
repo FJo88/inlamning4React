@@ -26,14 +26,14 @@ const Deposit = () =>{
             <h1>Balance: {balance}</h1>
             <div>
                 <h4>Deposit specific value:</h4>
+                <input type="number" id="value" />
+                <button onClick={onDepositValue}>Deposit value</button> 
+                <br/>
+                <br/>
                 <button onClick={onDepositClicked}>100</button>
                 <button onClick={onDepositClicked}>200</button>
                 <button onClick={onDepositClicked}>500</button>
                 <button onClick={onDepositClicked}>1000</button>
-                <br/>
-                <br/>
-                <input type="number" id="value" />
-                <button onClick={onDepositValue}>Deposit value</button> 
             </div>
         </div>
     )

@@ -33,14 +33,14 @@ const Withdraw = () => {
             <h1>Balance: {balance}</h1>
             <div>
                 <h4>Withdraw specific value:</h4>
+                <input type="number" id="value" />
+                <button onClick={onWithDrawValue}>Withdraw value</button>
+                <br/>
+                <br/>
                 <button onClick={onWithDrawClicked}>100</button>
                 <button onClick={onWithDrawClicked}>200</button>
                 <button onClick={onWithDrawClicked}>500</button>
                 <button onClick={onWithDrawClicked}>1000</button>
-                <br/>
-                <br/>
-                <input type="number" id="value" />
-                <button onClick={onWithDrawValue}>Withdraw value</button> 
             </div>
         </div>
     )
