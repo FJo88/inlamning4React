@@ -4,21 +4,19 @@ import { depositClickedValue, depositValue } from "../redux/ducks/atm";
 const Deposit = () =>{
     let dispatch = useDispatch();
     const balance = useSelector((state) => state.balance);
-    
+    let input = document.querySelector("input");
 
     let onDepositClicked = (e) =>{
         const value = +e.target.innerText;
         dispatch(depositClickedValue(value));
         console.log("You deposited "+ value);
-        
-        return value;
     };
  
     let onDepositValue = () =>{
         const value = +document.querySelector("#value").value;
         dispatch(depositValue(value));
         console.log("You deposited "+ value);
-        return value;
+        input.value = "";
     }
 
     return (

@@ -5,6 +5,7 @@ const Withdraw = () => {
 
     let dispatch = useDispatch();
     const balance = useSelector((state) => state.balance);
+    let input = document.querySelector("input");
 
     let onWithDrawClicked = (e) =>{
         let value = e.target.innerText;
@@ -22,6 +23,7 @@ const Withdraw = () => {
         if(value <= balance){
             dispatch(withDrawValue(value));
             console.log("You withdrew "+ value);
+            input.value = "";
         }
         else{
             alert("Not enough money on your account!!!")
@@ -34,7 +36,7 @@ const Withdraw = () => {
             <div>
                 <h4>Withdraw specific value:</h4>
                 <input type="number" id="value" />
-                <button onClick={onWithDrawValue}>Withdraw value</button>
+                <button onClick={onWithDrawValue} >Withdraw value</button>
                 <br/>
                 <br/>
                 <button onClick={onWithDrawClicked}>100</button>
